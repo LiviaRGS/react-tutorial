@@ -1,17 +1,23 @@
 import { useState } from "react";
 
-const TarefasForm = ({onAddTarefa}) => {
-    const [tarefa,setTarefa] = useState('');
+const TarefasForm = ( {onAddTarefa} ) => {
+    const [tarefa, setTarefa] = useState('')
+
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if(tarefa.trim()) {
-            onAddTarefa(tarefa.trim());
-            setTarefa('');
+        e.preventDefault()
+
+        if (tarefa.trim()){
+            onAddTarefa(tarefa.trim())
+            setTarefa('')
         }
     }
-    return (
+
+    return(
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Digita a tarefa bro" value = {tarefa} onChange={(e)=>setTarefa(e.target.value)}/>
+            <input type="text"
+            placeholder="Digite sua tarefa"
+            value={tarefa}
+            onChange={(e) => setTarefa(e.target.value)} />
             <button type="submit">Adicionar</button>
         </form>
     )

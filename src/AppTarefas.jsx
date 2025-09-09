@@ -1,26 +1,33 @@
 import { useState } from "react";
 import TarefasForm from "./TarefasForm";
 import TarefasLista from "./TarefasLista";
-TarefasLista
 
 const AppTarefas = () => {
-    const [tarefas,setTarefas] = useState([]);
-   
+    const [tarefas, setTarefas] = useState([])
+
     const addTarefa = (texto) => {
         const novaTarefa = {
-            id: Date.now(),
+            id: Date.now(), 
             texto: texto,
         }
-       
 
-        setTarefas([...tarefas,novaTarefa]);
+    setTarefas([...tarefas, novaTarefa])
     }
-    
-    return (
+
+    const editTarefa = (id, novoTexto) =>{
+        setTarefas(tarefas.map(tarefa => tarefa.id === id ? {...tarefa, texto: novoTexto} : tarefa))
+    }
+
+    const deleteTarefa = (id) =>{
+        setTarefas(tarefas.filter(tarefa => tarefa.id !== id))
+    }
+
+
+    return(
         <div>
-            <h1>Keepão ;m;</h1>
-            <TarefasForm onAddTarefa = {addTarefa}/>
-            <TarefasLista tarefas={tarefas}/>
+            <h1>Keepão ;-;</h1>
+            <TarefasForm onAddTarefa={addTarefa} />
+            <TarefasLista tarefas={tarefas} onEditTarefa={editTarefa} onDeleteTarefa={deleteTarefa} />
         </div>
     )
 }
