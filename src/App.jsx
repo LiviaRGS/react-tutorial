@@ -2,9 +2,12 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Sobre from './pages/Sobre'
 import './App.css'
+import './tema.css'
 import AppTarefas from './AppTarefas'
-import { ThemeProvider } from './contexts/ThemeContext'
+import { ThemeContext, ThemeProvider } from './contexts/ThemeContext'
 import ThemeToggleButton from './components/ThemeToggleButton'
+import { useContext } from 'react'
+import Usuarios from './pages/Usuarios'
 
 function App() {
  
@@ -17,6 +20,7 @@ function App() {
               <li><Link to = "/">Home</Link></li>
               <li><Link to = "/sobre">Sobre</Link></li>
               <li><Link to = "/tarefas">Tarefas</Link></li>
+              <li><Link to = "/usuarios">Usuarios</Link></li>
             </ul>
             <ThemeToggleButton></ThemeToggleButton>
           </nav>
@@ -26,6 +30,7 @@ function App() {
             <Route path = '/' element={<Home />}/>
             <Route path = '/sobre' element={<Sobre />}/>
             <Route path = '/tarefas' element={<AppTarefas />}/>
+            <Route path = '/usuarios' element={<Usuarios />}/>
           </Routes>
         </div>
       </BrowserRouter>

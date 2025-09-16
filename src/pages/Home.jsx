@@ -5,7 +5,7 @@ const Home = () => {
     const { theme } = useContext(ThemeContext);
 
     return (
-        <div>
+        <div className = {theme}>
             <h2>Página Inicial - {theme}</h2>
             <p>Bem-vindo yay.</p>
         </div>
