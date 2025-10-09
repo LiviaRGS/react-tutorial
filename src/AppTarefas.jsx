@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TarefasForm from "./TarefasForm";
+import TarefasForm from "./pages/Form";
 import TarefasLista from "./TarefasLista";
 
 const AppTarefas = () => {

@@ -1,13 +1,10 @@
-import { useContext } from "react"
-import { ThemeContext } from "../contexts/ThemeContext"
 
-const Home = () => {
-    const { theme } = useContext(ThemeContext);
 
+const Home = () => {  
     return (
-        <div className = {theme}>
-            <h2>Página Inicial - {theme}</h2>
+        <div>
             <p>Bem-vindo yay.</p>
+            <img src="default_625762achievements_aki3.png" alt="Aki" />
         </div>
     )
 }

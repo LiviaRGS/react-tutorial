@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react"
 
-const Usuarios = () => {
+const Notas = () => {
     const [dados, setDados] = useState(null);
     const [carregando, setCarregando] = useState(true);
 
     useEffect(() => {
         const buscaDados = async () => {
             try {
-                const resposta = await fetch('https://jsonplaceholder.typicode.com/users');
+                const resposta = await fetch('http://127.0.0.1:8000/notas');
                 if(!resposta.ok){
                     throw new Error(`Erro no fetch: ${resposta.status}`)
                 }
                 const resultado = await resposta.json();
                 setDados(resultado);
+                console.log(dados)
             }catch(erro){
                 console.log(erro);
             }finally{
@@ -23,14 +24,17 @@ const Usuarios = () => {
     }, []);
     return (
         <div>
-            <h2>Usuarios</h2>
+            <h2>Notas</h2>
             <p>Dados requisitados por API</p>
             <div>{carregando ? "Carregando..." : ""}</div>
             <ul>
-                {dados && dados.map(user => (<li key = {user.id}>{user.name}</li>))}
+                {dados && dados.map(nota => (<li key = {nota.id}>
+                    <p>{nota.titulo}</p>
+                    <p>{nota.texto}</p>
+                </li>))}
             </ul>
         </div>
     )
 }
 
-export default Usuarios
+export default Notas
